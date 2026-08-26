@@ -10,3 +10,64 @@ footer{padding:120px 8vw 55px;background:var(--rust);color:var(--white)}.footerL
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}.heroPortrait{transform:none!important}}
 
 @media(max-width:800px){.gallery{padding:90px 6vw}.galleryHeading{grid-template-columns:1fr}.galleryHeading>p:last-child{grid-column:1}.milestoneFeature{grid-template-columns:1fr;gap:42px;padding:28px 0 72px}.milestoneFeature img{height:auto;max-height:none}.socialMilestone{grid-template-columns:1fr;gap:35px;padding:55px 0}.galleryGrid{grid-template-columns:1fr}.galleryGrid article{min-height:210px;border-right:0;border-bottom:1px solid var(--ink)}.galleryGrid article:last-child{border-bottom:0}.galleryGrid h3{margin-top:42px}}
+
+/* Bright scientific visuals */
+.brightFrame{background:var(--paper);border-color:rgba(16,24,32,.45)}
+.svgMedia{background:var(--paper)}
+.svgMedia svg{display:block;width:100%;height:100%}
+.brightFrame figcaption{background:var(--ink);color:var(--white)}
+.traceLine,.streamlines path,.miniFlow path,.bloodPaths path,.hormoneWave,.instabilityArc{animation:dashFlow 7s linear infinite}
+.traceLine.delayed{animation-delay:-2.5s}
+.trackedCell{animation:gentleTranslate 5s ease-in-out infinite alternate;transform-origin:center}
+.secondCell{animation-direction:alternate-reverse}
+.modelSwimmer,.beatTail{animation:tailPulse 3.8s ease-in-out infinite;transform-origin:center}
+.vortices ellipse,.toroidVortices ellipse{animation:vortexPulse 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.vortices ellipse:nth-child(2),.toroidVortices ellipse:nth-child(even){animation-delay:-1.6s}
+.samplePoints circle,.glucoseNodes circle{animation:nodePulse 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.samplePoints circle:nth-child(even),.glucoseNodes circle:nth-child(even){animation-delay:-1.2s}
+.clockHand{animation:clockRotate 12s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes dashFlow{to{stroke-dashoffset:-110}}
+@keyframes gentleTranslate{to{transform:translateX(12px)}}
+@keyframes tailPulse{50%{transform:scaleY(.88)}}
+@keyframes vortexPulse{50%{transform:scale(.82);opacity:.48}}
+@keyframes nodePulse{50%{transform:scale(1.35);opacity:.55}}
+@keyframes clockRotate{to{transform:rotate(360deg)}}
+
+/* Illustrated research projects */
+.project.visualProject{grid-template-columns:70px minmax(0,1fr) minmax(300px,.72fr);align-items:center;padding:46px 0}
+.project.visualProject:hover{padding-left:16px;padding-right:16px}
+.visualProject .projectEquation{display:block;text-align:left;margin-top:20px;font-size:15px}
+.projectVisual{margin:0;border-left:1px solid var(--line);padding-left:32px}
+.projectVisual svg{display:block;width:100%;height:auto;max-height:260px}
+.visualProject:nth-child(even) .projectVisual svg rect{fill:#fffdf7}
+
+/* LinkedIn photographic essay */
+.socialMilestone{grid-template-columns:.72fr 1.28fr}
+.socialIntro{font-size:18px;line-height:1.5;color:var(--blue)}
+.linkedInPhotos{grid-column:1/-1;display:grid;grid-template-columns:1.15fr .72fr 1.15fr;grid-template-rows:280px 310px;gap:14px;margin-top:20px}
+.linkedInPhotos figure{margin:0;position:relative;overflow:hidden;background:var(--ink)}
+.linkedInPhotos figure:nth-child(2){grid-row:span 2}
+.linkedInPhotos figure:nth-child(5){grid-column:2/4}
+.linkedInPhotos img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .5s;filter:saturate(.88) contrast(1.04)}
+.linkedInPhotos figure:hover img{transform:scale(1.035);filter:saturate(1) contrast(1.05)}
+.linkedInPhotos figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;color:var(--white);background:linear-gradient(transparent,rgba(16,24,32,.86));font-size:13px}
+
+@media(max-width:900px){
+  .project.visualProject{grid-template-columns:42px 1fr}
+  .projectVisual{grid-column:2;border-left:0;padding:22px 0 0}
+  .visualProject .projectEquation{display:block}
+  .linkedInPhotos{grid-template-columns:1fr 1fr;grid-template-rows:220px 260px 220px}
+  .linkedInPhotos figure:nth-child(2){grid-row:span 2}
+  .linkedInPhotos figure:nth-child(5){grid-column:1/-1}
+}
+@media(max-width:600px){
+  .visualBand{padding-top:80px;padding-bottom:80px}
+  .visualStack{padding-top:25px}
+  .visualFrame{margin-bottom:60px}
+  .equationOverlay{position:relative;top:auto;left:auto;margin:-28px 16px 25px;padding:16px;font-size:18px;box-shadow:10px 10px 0 var(--rust)}
+  .project.visualProject{grid-template-columns:32px 1fr;gap:16px;padding:34px 0}
+  .projectVisual{grid-column:1/-1;padding:15px 0 0}
+  .linkedInPhotos{display:grid;grid-template-columns:1fr;grid-template-rows:none}
+  .linkedInPhotos figure,.linkedInPhotos figure:nth-child(2),.linkedInPhotos figure:nth-child(5){grid-column:auto;grid-row:auto;height:260px}
+  .linkedInPhotos figure:nth-child(2){height:420px}
+}
