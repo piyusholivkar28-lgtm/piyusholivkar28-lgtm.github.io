@@ -179,3 +179,20 @@ footer address strong a{border-bottom:1px solid currentColor;padding-bottom:3px}
   .journeyCopy,.journeyStop:nth-of-type(even) .journeyCopy{grid-column:2;grid-row:2;text-align:left;padding:0 0 0 22px;margin:0}
   .journeyCopy h3{font-size:12vw}
 }
+
+.recognitionMilestones{margin:90px 0 110px;border-top:1px solid var(--ink)}
+.recognitionStory{display:grid;grid-template-columns:.74fr 1.26fr;gap:6vw;padding:70px 0;border-bottom:1px solid var(--ink);align-items:start}
+.recognitionCopy h3{font-size:clamp(42px,5.5vw,82px);font-weight:400;line-height:.94;letter-spacing:-.04em;margin:18px 0 24px}
+.recognitionCopy>p:not(.milestoneType):not(.courseTitle){font-size:18px;line-height:1.6;max-width:700px}
+.recognitionCopy .courseTitle{font-size:clamp(21px,2.2vw,32px);line-height:1.22;color:var(--blue);margin:0 0 25px}
+.recognitionCopy a{display:inline-block;margin-top:18px;padding-bottom:7px;border-bottom:1px solid var(--blue);font:700 10px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}
+.publicationDiptych{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.publicationDiptych figure,.pressClipping{margin:0;overflow:hidden;background:var(--paper);border:1px solid var(--ink)}
+.publicationDiptych img{display:block;width:100%;height:420px;object-fit:cover}
+.publicationDiptych figure:first-child img{object-position:center}
+.publicationDiptych figure:last-child img{object-position:top center}
+.publicationDiptych figcaption{padding:12px 14px;font:700 9px Arial,sans-serif;letter-spacing:.11em;text-transform:uppercase;line-height:1.45}
+.pressRecognition{grid-template-columns:1.18fr .82fr}
+.pressClipping{height:430px}
+.pressClipping img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+@media(max-width:800px){.recognitionMilestones{margin:65px 0 80px}.recognitionStory,.pressRecognition{grid-template-columns:1fr;padding:50px 0;gap:34px}.publicationDiptych img{height:240px}.pressClipping{height:280px}.pressRecognition .recognitionCopy{grid-row:1}.pressRecognition .pressClipping{grid-row:2}}
