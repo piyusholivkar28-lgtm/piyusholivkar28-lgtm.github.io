@@ -208,3 +208,65 @@ footer address strong a{border-bottom:1px solid currentColor;padding-bottom:3px}
 .publicationDiptych figure{transition:transform .25s ease}
 .publicationDiptych figure:hover{transform:translateY(-3px)}
 @media(max-width:800px){.publicationDiptych img{height:auto!important}.pressClipping{height:auto!important;aspect-ratio:698/375}}
+
+
+/* Proportion-preserving documentary and event photography */
+.milestoneFeature img,
+.publicationDiptych img,
+.talkPoster img{
+  width:100%;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center!important
+}
+.linkedInPhotos figure,
+.compactCollage figure,
+.outreachPhotoGrid figure{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#0a1117
+}
+.linkedInPhotos img,
+.compactCollage img,
+.outreachPhotoGrid img{
+  width:100%;
+  height:100%;
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important
+}
+.linkedInPhotos figure:hover img,
+.compactCollage figure:hover img,
+.outreachPhotoGrid figure:hover img{transform:none!important}
+.pressClipping{
+  height:auto!important;
+  aspect-ratio:auto!important;
+  position:relative;
+  overflow:hidden;
+  background:var(--paper)
+}
+.pressClipping a{display:block;position:static!important;overflow:visible}
+.pressClipping img{
+  display:block;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%;
+  transform:none!important;
+  object-fit:contain!important;
+  object-position:center!important
+}
+.pressClipping figcaption{
+  position:static!important;
+  padding:10px 13px;
+  background:var(--ink);
+  color:var(--white);
+  font:700 9px Arial,sans-serif;
+  letter-spacing:.11em;
+  text-transform:uppercase
+}
+@media(max-width:800px){
+  .pressClipping{height:auto!important;aspect-ratio:auto!important}
+}
