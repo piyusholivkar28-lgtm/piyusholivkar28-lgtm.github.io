@@ -270,3 +270,35 @@ footer address strong a{border-bottom:1px solid currentColor;padding-bottom:3px}
 @media(max-width:800px){
   .pressClipping{height:auto!important;aspect-ratio:auto!important}
 }
+
+
+/* Engineering awareness initiative */
+.outreachManifesto{padding:115px 8vw;background:var(--white);display:grid;grid-template-columns:.78fr 1.22fr;gap:8vw;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.outreachManifesto h2{font-size:clamp(52px,6.5vw,98px);font-weight:400;line-height:.93;letter-spacing:-.05em;margin:0;max-width:680px}
+.outreachManifestoCopy{align-self:end;border-top:1px solid var(--ink);padding-top:28px}
+.outreachManifestoCopy>p:first-child{font-size:clamp(23px,2.5vw,38px);line-height:1.22;color:var(--blue);margin:0 0 28px}
+.outreachAudience{font-size:18px;line-height:1.6;max-width:760px}
+.outreachManifestoActions{display:flex;flex-wrap:wrap;gap:30px;margin-top:35px}
+.outreachManifestoActions a,.initiativeInvite{display:inline-block;padding:11px 0;border-bottom:1px solid currentColor;font:700 10px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+.outreachManifestoActions a:last-child{color:var(--rust)}
+.initiativeFeature{margin:0 0 105px;padding:70px 0 0;border-top:1px solid rgba(255,255,255,.7);display:grid;grid-template-columns:1.08fr .92fr;gap:58px 7vw}
+.initiativeLabel{font:700 10px Arial,sans-serif;letter-spacing:.18em;color:var(--rust);margin:0 0 24px}
+.initiativeIntro h3{font-size:clamp(48px,6.4vw,96px);font-weight:400;line-height:.91;letter-spacing:-.05em;margin:0 0 22px;max-width:930px}
+.initiativeSubtitle{font-size:clamp(24px,2.7vw,40px);line-height:1.15;color:var(--cyan);margin:0 0 34px}
+.initiativeIntro>p:not(.initiativeLabel):not(.initiativeSubtitle){font-size:19px;line-height:1.62;max-width:760px}
+.initiativeInvite{margin-top:23px;color:var(--cyan)}
+.initiativeQuestions{padding-top:5px}
+.initiativeQuestions ul{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.34)}
+.initiativeQuestions li{position:relative;padding:16px 0 16px 24px;border-bottom:1px solid rgba(255,255,255,.24);font-size:17px;line-height:1.45}
+.initiativeQuestions li:before{content:"▪";position:absolute;left:0;color:var(--rust)}
+.initiativeJourney{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--cyan);padding-top:24px;position:relative}
+.initiativeJourney span,.initiativeJourney strong{position:relative;padding-right:20px;font-size:18px;font-weight:400}
+.initiativeJourney span:before,.initiativeJourney strong:before{content:"";position:absolute;width:9px;height:9px;background:var(--rust);top:-29px;left:0}
+.initiativeJourney strong{color:var(--cyan)}
+.initiativeFormat{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);margin:0;border-top:1px solid rgba(255,255,255,.42);border-bottom:1px solid rgba(255,255,255,.42)}
+.initiativeFormat div{padding:22px 20px 25px 0;border-right:1px solid rgba(255,255,255,.24)}
+.initiativeFormat div+div{padding-left:20px}
+.initiativeFormat div:last-child{border-right:0}
+.initiativeFormat dt{font:700 9px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
+.initiativeFormat dd{font-size:16px;line-height:1.4;margin:0}
+@media(max-width:800px){.outreachManifesto{padding:85px 6vw;grid-template-columns:1fr;gap:45px}.outreachManifesto h2{font-size:14vw}.outreachManifestoCopy>p:first-child{font-size:25px}.initiativeFeature{grid-template-columns:1fr;padding-top:52px;gap:45px}.initiativeIntro h3{font-size:13vw}.initiativeJourney{grid-template-columns:1fr;padding-left:22px;border-top:0;border-left:1px solid var(--cyan);gap:32px}.initiativeJourney span,.initiativeJourney strong{padding:0}.initiativeJourney span:before,.initiativeJourney strong:before{top:6px;left:-27px}.initiativeFormat{grid-template-columns:1fr 1fr}.initiativeFormat div{border-bottom:1px solid rgba(255,255,255,.24)}.initiativeFormat div:nth-child(2n){border-right:0}.initiativeFormat div:last-child{grid-column:1/-1}.outreachManifestoActions{gap:20px}}
