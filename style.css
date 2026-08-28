@@ -302,3 +302,10 @@ footer address strong a{border-bottom:1px solid currentColor;padding-bottom:3px}
 .initiativeFormat dt{font:700 9px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
 .initiativeFormat dd{font-size:16px;line-height:1.4;margin:0}
 @media(max-width:800px){.outreachManifesto{padding:85px 6vw;grid-template-columns:1fr;gap:45px}.outreachManifesto h2{font-size:14vw}.outreachManifestoCopy>p:first-child{font-size:25px}.initiativeFeature{grid-template-columns:1fr;padding-top:52px;gap:45px}.initiativeIntro h3{font-size:13vw}.initiativeJourney{grid-template-columns:1fr;padding-left:22px;border-top:0;border-left:1px solid var(--cyan);gap:32px}.initiativeJourney span,.initiativeJourney strong{padding:0}.initiativeJourney span:before,.initiativeJourney strong:before{top:6px;left:-27px}.initiativeFormat{grid-template-columns:1fr 1fr}.initiativeFormat div{border-bottom:1px solid rgba(255,255,255,.24)}.initiativeFormat div:nth-child(2n){border-right:0}.initiativeFormat div:last-child{grid-column:1/-1}.outreachManifestoActions{gap:20px}}
+
+
+/* Outreach invitation refinement */
+.outreachManifestoActions a:last-child{padding:13px 18px;background:var(--rust);border:1px solid var(--rust);color:var(--white)}
+.initiativeInvite{margin-top:30px;padding:18px 24px!important;background:var(--rust);border:1px solid var(--rust)!important;color:var(--white)!important;font-size:14px!important;line-height:1.2;letter-spacing:.1em!important;font-weight:700!important}
+.initiativeInvite:hover,.initiativeInvite:focus-visible{background:var(--white);color:var(--ink)!important;border-color:var(--white)!important}
+@media(max-width:800px){.initiativeInvite{display:block;width:100%;padding:18px 16px!important;text-align:center;font-size:13px!important}}
