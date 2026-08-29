@@ -436,3 +436,27 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .talkRecordingHeader a{display:inline-block;margin-top:20px;padding:12px 0;min-height:44px}
   .talkRecordingFrame{aspect-ratio:16/10}
 }
+
+
+/* Consent-based analytics and measurable video playback. */
+.videoPlayButton{position:absolute;inset:0;width:100%;height:100%;border:0;background:linear-gradient(135deg,#101820,#1f3e4b);color:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;font-family:Georgia,"Times New Roman",serif}
+.videoPlayButton strong{padding:17px 25px;border:1px solid var(--cyan);font:700 13px Arial,sans-serif;letter-spacing:.16em}
+.videoPlayButton span{font-size:18px}
+.privacyNotice{margin-top:45px;padding-top:24px;border-top:1px solid rgba(255,255,255,.32);max-width:920px}
+.privacyNotice summary{cursor:pointer;font:700 10px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.privacyNotice p{font-size:14px;line-height:1.6;color:rgba(255,253,247,.72)}
+.privacyNotice button{padding:9px 0;border:0;border-bottom:1px solid var(--cyan);border-radius:0;background:transparent;color:var(--cyan);font:700 9px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
+.analyticsConsent{position:fixed;z-index:30;left:22px;right:22px;bottom:22px;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;padding:22px 24px;background:var(--ink);color:var(--white);border:1px solid rgba(255,255,255,.62);box-shadow:0 12px 45px rgba(0,0,0,.35)}
+.analyticsConsent[hidden]{display:none}
+.analyticsConsent strong{font:700 10px Arial,sans-serif;letter-spacing:.16em;color:var(--rust)}
+.analyticsConsent p{margin:8px 0;font-size:15px;line-height:1.45;max-width:760px}
+.analyticsConsent a{font-size:13px;color:var(--cyan);border-bottom:1px solid var(--cyan)}
+.analyticsConsentActions{display:flex;gap:10px}
+.analyticsConsent button{min-height:46px;padding:12px 17px;border:1px solid var(--cyan);border-radius:0;background:var(--cyan);color:var(--ink);font:700 10px Arial,sans-serif;letter-spacing:.11em;text-transform:uppercase;cursor:pointer}
+.analyticsConsent button+button{background:transparent;color:var(--white);border-color:rgba(255,255,255,.55)}
+@media(max-width:700px){
+  .analyticsConsent{left:10px;right:10px;bottom:10px;grid-template-columns:1fr;gap:18px;padding:19px}
+  .analyticsConsentActions{display:grid;grid-template-columns:1fr}
+  .analyticsConsent button{width:100%}
+  .videoPlayButton span{font-size:15px;padding:0 18px;text-align:center}
+}
