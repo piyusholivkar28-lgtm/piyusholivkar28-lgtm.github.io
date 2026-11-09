@@ -1,17 +1,99 @@
-const GA_MEASUREMENT_ID="G-Y3CQW7PE4V";
-const campaignKeys=["utm_source","utm_medium","utm_campaign","utm_content"];
-const getCampaign=()=>{try{return JSON.parse(sessionStorage.getItem("outreach-campaign")||"{}")}catch{return{}}};
-const captureCampaign=()=>{const query=new URLSearchParams(location.search);const campaign={};campaignKeys.forEach(key=>{const value=query.get(key);if(value)campaign[key]=value});if(Object.keys(campaign).length)sessionStorage.setItem("outreach-campaign",JSON.stringify(campaign))};
-const startAnalytics=()=>{if(document.getElementById("google-analytics"))return;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date);gtag("config",GA_MEASUREMENT_ID,{anonymize_ip:true});const script=document.createElement("script");script.id="google-analytics";script.async=true;script.src="https://www.googletagmanager.com/gtag/js?id="+GA_MEASUREMENT_ID;document.head.appendChild(script);const campaign=getCampaign();if(campaign.utm_campaign)gtag("event","outreach_campaign_visit",campaign)};
-const track=(name,parameters={})=>{if(localStorage.getItem("analytics-consent")!=="granted"||typeof gtag!=="function")return;gtag("event",name,{...getCampaign(),...parameters})};
+/* Piyush Olivkar — site behaviour: menu, consent-gated analytics, reveal, lightbox. */
+document.documentElement.classList.add("js");
+
+/* ---------- Analytics (only after consent) ---------- */
+const GA_MEASUREMENT_ID = "G-Y3CQW7PE4V";
+const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+const store = {
+  get(k, s = localStorage) { try { return s.getItem(k); } catch { return null; } },
+  set(k, v, s = localStorage) { try { s.setItem(k, v); } catch {} },
+  del(k, s = localStorage) { try { s.removeItem(k); } catch {} }
+};
+const getCampaign = () => { try { return JSON.parse(store.get("outreach-campaign", sessionStorage) || "{}"); } catch { return {}; } };
+const captureCampaign = () => {
+  const q = new URLSearchParams(location.search), c = {};
+  campaignKeys.forEach(k => { const v = q.get(k); if (v) c[k] = v; });
+  if (Object.keys(c).length) store.set("outreach-campaign", JSON.stringify(c), sessionStorage);
+};
+const startAnalytics = () => {
+  if (document.getElementById("google-analytics")) return;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID, { anonymize_ip: true });
+  const s = document.createElement("script");
+  s.id = "google-analytics"; s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID;
+  document.head.appendChild(s);
+  const c = getCampaign();
+  if (c.utm_campaign) gtag("event", "outreach_campaign_visit", c);
+};
+const track = (name, params = {}) => {
+  if (store.get("analytics-consent") !== "granted" || typeof gtag !== "function") return;
+  gtag("event", name, { ...getCampaign(), ...params });
+};
 captureCampaign();
-if(localStorage.getItem("analytics-consent")==="granted")startAnalytics();
-const consent=document.querySelector(".analyticsConsent");
-if(consent&&!localStorage.getItem("analytics-consent"))consent.hidden=false;
-consent?.querySelectorAll("[data-consent]").forEach(button=>button.addEventListener("click",()=>{const choice=button.dataset.consent;localStorage.setItem("analytics-consent",choice);if(choice==="granted")startAnalytics();consent.hidden=true}));
-document.querySelector(".privacyReset")?.addEventListener("click",()=>{localStorage.removeItem("analytics-consent");location.reload()});
-const button=document.querySelector(".menuButton");const nav=document.querySelector(".nav");button?.addEventListener("click",()=>{const open=nav.classList.toggle("open");button.setAttribute("aria-expanded",String(open));button.querySelector("span").textContent=open?"×":"+"});nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+if (store.get("analytics-consent") === "granted") startAnalytics();
 
+const consent = document.querySelector(".analyticsConsent");
+if (consent && !store.get("analytics-consent")) consent.hidden = false;
+consent?.querySelectorAll("[data-consent]").forEach(b => b.addEventListener("click", () => {
+  const choice = b.dataset.consent;
+  store.set("analytics-consent", choice);
+  if (choice === "granted") startAnalytics();
+  consent.hidden = true;
+}));
+document.querySelector(".privacyReset")?.addEventListener("click", () => { store.del("analytics-consent"); location.reload(); });
 
-document.addEventListener("click",event=>{const link=event.target.closest?.("a");if(!link)return;const href=link.getAttribute("href")||"";if(link.classList.contains("initiativeInvite"))track("talk_invitation_click");else if(/\\.pdf(?:$|\\?)/i.test(href))track("cv_download");else if(href.startsWith("mailto:"))track("email_click");else if(href.includes("drive.google.com"))track("fdp_video_open");else if(/linkedin\\.com|facebook\\.com/.test(href))track("social_link_click",{destination:new URL(href,location.href).hostname});else if(/scholar\\.google|orcid\\.org|github\\.com/.test(href))track("academic_profile_click",{destination:new URL(href,location.href).hostname})});
-const viewed=new Set;const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting&&entry.target.id&&!viewed.has(entry.target.id)){viewed.add(entry.target.id);track("section_view",{section_id:entry.target.id})}}),{threshold:.35});document.querySelectorAll("main section[id],footer[id]").forEach(section=>observer.observe(section));
+/* ---------- Mobile menu ---------- */
+const menu = document.querySelector(".menuButton"), nav = document.querySelector(".nav");
+menu?.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(open));
+  menu.textContent = open ? "Close" : "Menu";
+});
+
+/* ---------- Click tracking ---------- */
+document.addEventListener("click", e => {
+  const a = e.target.closest?.("a"); if (!a) return;
+  const href = a.getAttribute("href") || "";
+  if (a.classList.contains("initiativeInvite")) track("talk_invitation_click");
+  else if (/\.pdf(?:$|\?)/i.test(href)) track(/CV/i.test(href) ? "cv_download" : "pdf_open", { file: href });
+  else if (href.startsWith("mailto:")) track("email_click");
+  else if (href.includes("drive.google.com")) track("fdp_video_open");
+  else if (/linkedin\.com|facebook\.com/.test(href)) track("social_link_click", { destination: new URL(href, location.href).hostname });
+  else if (/scholar\.google|orcid\.org|github\.com/.test(href)) track("academic_profile_click", { destination: new URL(href, location.href).hostname });
+});
+
+/* ---------- Section views + reveal on scroll ---------- */
+const viewed = new Set();
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const t = en.target;
+    if (t.classList.contains("reveal")) { t.classList.add("in"); io.unobserve(t); }
+    if (t.id && !viewed.has(t.id)) { viewed.add(t.id); track("section_view", { section_id: t.id }); }
+  }), { threshold: .15, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal, main section[id]").forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+
+/* ---------- Lightbox for photos ---------- */
+const links = document.querySelectorAll("a[data-lightbox]");
+if (links.length && typeof HTMLDialogElement === "function") {
+  const dlg = document.createElement("dialog");
+  dlg.className = "lightbox";
+  dlg.innerHTML = '<button type="button" aria-label="Close">×</button><img alt=""><p></p>';
+  document.body.appendChild(dlg);
+  const img = dlg.querySelector("img"), cap = dlg.querySelector("p");
+  dlg.querySelector("button").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  links.forEach(a => a.addEventListener("click", e => {
+    e.preventDefault();
+    const thumb = a.querySelector("img");
+    img.src = a.href; img.alt = thumb?.alt || "";
+    cap.textContent = thumb?.alt || "";
+    dlg.showModal();
+  }));
+}
