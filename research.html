@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Research | Piyush Olivkar</title>
-  <meta name="description" content="Research projects by Piyush Olivkar in sperm microhydrodynamics, cerebral haemodynamics, circadian–endocrine dynamics, partial-gravity muscle-model identifiability and toroidal flow instability.">
+  <meta name="description" content="Research projects by Piyush Olivkar in sperm microhydrodynamics, cerebral haemodynamics, circadian–endocrine dynamics, cardiovascular parameter identifiability and toroidal flow instability.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="author" content="Piyush Ramkrishna Olivkar">
   <meta name="theme-color" content="#0f171e">
   <link rel="canonical" href="https://piyusholivkar28-lgtm.github.io/research.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Research | Piyush Olivkar">
-  <meta property="og:description" content="Research projects by Piyush Olivkar in sperm microhydrodynamics, cerebral haemodynamics, circadian–endocrine dynamics, partial-gravity muscle-model identifiability and toroidal flow instability.">
+  <meta property="og:description" content="Research projects by Piyush Olivkar in sperm microhydrodynamics, cerebral haemodynamics, circadian–endocrine dynamics, cardiovascular parameter identifiability and toroidal flow instability.">
   <meta property="og:url" content="https://piyusholivkar28-lgtm.github.io/research.html">
   <meta property="og:image" content="https://piyusholivkar28-lgtm.github.io/assets/piyush-olivkar.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -86,21 +86,21 @@
             </div>
             <figure><svg viewBox="0 0 520 300" role="img" aria-label="Schematic of a clock beside a hormone oscillation"><rect class="bg" width="520" height="300"/><circle cx="150" cy="150" r="90" fill="none" stroke="#2c5f78" stroke-width="9"/><g stroke="#0f171e" stroke-width="8" stroke-linecap="round"><path d="M150 150V92"/><path d="M150 150L199 176"/></g><circle cx="150" cy="150" r="10" fill="#b65437"/><path d="M270 151C300 60 330 240 360 151S420 60 450 151S490 238 520 148" fill="none" stroke="#b65437" stroke-width="8"/></svg></figure>
           </li>
-          <li class="project reveal" id="partial-gravity">
+          <li class="project reveal" id="cardiovascular-identifiability">
             <span class="n">04</span>
             <div>
-              <p class="label">Model identifiability</p>
-              <h2>Partial-gravity skeletal-muscle response</h2>
-              <p class="summary">This computational reanalysis tests whether published spaceflight mouse data can identify a continuous relationship between gravity level and skeletal-muscle preservation. The central result is about inferential limits: the available observations constrain effects at tested gravity levels, but do not establish a unique preservation threshold.</p>
+              <p class="label">Identifiability &amp; measurement design</p>
+              <h2>Cardiovascular parameter identifiability</h2>
+              <p class="summary">Can pressure trajectories that are fitted almost perfectly still correspond to the wrong physiological parameters? This study uses a ten-parameter, four-compartment cardiovascular model to derive exact parameter symmetries and test which pressure–flow acquisition protocols break them under matched noise.</p>
               <dl class="projectDetails">
-                <div><dt>Source data</dt><dd>Mouse-level soleus mass, mean myofiber area and type-IIb proportion from three ISS missions.</dd></div>
-                <div><dt>Uncertainty</dt><dd>Mission-specific contrasts, shared-control covariance and 20,000 bootstrap resamples per endpoint.</dd></div>
-                <div><dt>Models tested</dt><dd>Linear and saturating gravity-response curves with bounded residual mission effects.</dd></div>
-                <div><dt>Contribution</dt><dd>Identifiability limits and design targets for future same-mission, multi-gravity experiments.</dd></div>
+                <div><dt>Model</dt><dd>Ten-parameter, four-compartment passive circulation model with heart rate prescribed as an input.</dd></div>
+                <div><dt>Exact ambiguity</dt><dd>Global volume scaling and pump–peripheral conductance redistribution can leave all pressure trajectories unchanged.</dd></div>
+                <div><dt>Protocols tested</dt><dd>Three pressure traces, timed flow observations and fixed versus varying heart-rate inputs.</dd></div>
+                <div><dt>Main finding</dt><dd>Breaking an exact symmetry can restore local rank without guaranteeing accurate unregularized recovery under noise.</dd></div>
               </dl>
-              <span class="eq">observed gravity groups &ne; an identified continuous threshold</span>
+              <span class="eq">p(t; &theta;<sub>1</sub>) = p(t; &theta;<sub>2</sub>) &nbsp; while &nbsp; &theta;<sub>1</sub> &ne; &theta;<sub>2</sub></span>
             </div>
-            <figure><svg viewBox="0 0 520 300" role="img" aria-label="Schematic showing several gravity-response curves compatible with sparse observations"><rect class="bg" width="520" height="300"/><path d="M66 36V248H480" fill="none" stroke="#0f171e" stroke-width="4"/><path d="M66 230C145 205 218 142 480 74" fill="none" stroke="#2c5f78" stroke-width="7"/><path d="M66 230C160 218 213 105 480 74" fill="none" stroke="#b65437" stroke-width="7"/><path d="M66 230C128 116 238 82 480 74" fill="none" stroke="#7fb3c6" stroke-width="7" stroke-dasharray="13 9"/><g fill="#0f171e"><circle cx="66" cy="230" r="9"/><circle cx="135" cy="191" r="9"/><circle cx="480" cy="74" r="9"/></g><g fill="#5b6670" font-size="18"><text x="52" y="278">0 g</text><text x="112" y="278">1/6 g</text><text x="459" y="278">1 g</text></g></svg></figure>
+            <figure><svg viewBox="0 0 520 300" role="img" aria-label="Two different cardiovascular parameter sets producing the same pressure trace"><rect class="bg" width="520" height="300"/><g fill="none" stroke="#0f171e" stroke-width="4"><rect x="32" y="43" width="94" height="58"/><rect x="32" y="199" width="94" height="58"/><path d="M126 72H175M126 228H175"/></g><g font-size="19" fill="#0f171e" text-anchor="middle"><text x="79" y="78">&theta;₁</text><text x="79" y="234">&theta;₂</text></g><path d="M175 72C205 19 235 125 265 72S325 19 355 72S415 125 445 72S487 30 520 71" fill="none" stroke="#2c5f78" stroke-width="8"/><path d="M175 228C205 175 235 281 265 228S325 175 355 228S415 281 445 228S487 186 520 227" fill="none" stroke="#b65437" stroke-width="8"/><path d="M174 150H478" stroke="#7fb3c6" stroke-width="3" stroke-dasharray="10 8"/><g font-size="18" fill="#5b6670"><text x="186" y="139">same p(t)</text><text x="378" y="139">different parameters</text></g></svg></figure>
           </li>
           <li class="project reveal" id="toroid">
             <span class="n">05</span>
